@@ -20,6 +20,7 @@ router.get('/all', (req, res, next) => {
         res.send("500 Internal Server Error")
         return;
       }
+      console.log(rows);
       req.ingredients = rows;
 
       db.all('SELECT * FROM instruction', (err, rows) => {
@@ -31,14 +32,14 @@ router.get('/all', (req, res, next) => {
         }
         req.instructions = rows;
 
-        let data = {};
-        req.recipes.forEach(recipe => data[recipe.name] = { ingredients: [], instructions: {} });
-        req.ingredients.forEach(ingredient => data[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
-        req.instructions.forEach(instruction => data[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
+        let body = {};
+        req.recipes.forEach(recipe => body[recipe.name] = { ingredients: [], instructions: {} });
+        req.ingredients.forEach(ingredient => body[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
+        req.instructions.forEach(instruction => body[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
         
         res.header("Content-Type", 'application/json');
         res.status(200);
-        res.send(JSON.stringify(data, null, 2));
+        res.send(JSON.stringify(body, null, 2));
       });
     });
   });

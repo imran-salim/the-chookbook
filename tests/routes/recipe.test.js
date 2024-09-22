@@ -184,7 +184,7 @@ test('the recipe data is formatted correctly to be sent in the response body', (
       res.send("500 Internal Server Error")
       return;
     }
-    req.recipes = rows;
+    let recipes = rows;
 
     db.all('SELECT * FROM ingredient', (err, rows) => {
       if (err) {
@@ -193,8 +193,7 @@ test('the recipe data is formatted correctly to be sent in the response body', (
         res.send("500 Internal Server Error")
         return;
       }
-      console.log(rows);
-      req.ingredients = rows;
+      let ingredients = rows;
 
       db.all('SELECT * FROM instruction', (err, rows) => {
         if (err) {
@@ -203,12 +202,12 @@ test('the recipe data is formatted correctly to be sent in the response body', (
             res.send("500 Internal Server Error")
             return;
         }
-        req.instructions = rows;
+        let instructions = rows;
 
         let body = {};
-        req.recipes.forEach(recipe => body[recipe.name] = { ingredients: [], instructions: {} });
-        req.ingredients.forEach(ingredient => body[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
-        req.instructions.forEach(instruction => body[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
+        recipes.forEach(recipe => body[recipe.name] = { ingredients: [], instructions: {} });
+        ingredients.forEach(ingredient => body[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
+        instructions.forEach(instruction => body[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
         
         expect(body).toEqual(data);
       });

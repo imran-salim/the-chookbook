@@ -4,11 +4,13 @@ const db = new sqlite3.Database(':memory:');
 const initializeRecipeDatabase = () => {
   db.exec(`
     CREATE TABLE IF NOT EXISTS recipe (
-      name TEXT NOT NULL PRIMARY KEY,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
       UNIQUE(name)
     );
   
     CREATE TABLE IF NOT EXISTS ingredient (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       recipe_name TEXT NOT NULL,
       ingredient_description TEXT NOT NULL,
       FOREIGN KEY (recipe_name)
@@ -16,6 +18,7 @@ const initializeRecipeDatabase = () => {
     );
     
     CREATE TABLE IF NOT EXISTS instruction (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       recipe_name TEXT NOT NULL,
       instruction_number INTEGER NOT NULL,
       instruction_description TEXT NOT NULL,

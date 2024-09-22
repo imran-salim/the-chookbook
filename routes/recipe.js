@@ -36,9 +36,10 @@ router.get('/', (req, res, next) => {
         req.ingredients.forEach(ingredient => body[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
         req.instructions.forEach(instruction => body[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
         
-        res.header("Content-Type", 'application/json');
         res.status(200);
-        res.send(JSON.stringify(body, null, 2));
+        // res.header("Content-Type", 'application/json');
+        // res.send(JSON.stringify(body, null, 2));
+        res.render('recipes', { title: 'Recipes', recipes: body });
       });
     });
   });

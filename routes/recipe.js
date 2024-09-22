@@ -20,7 +20,6 @@ router.get('/all', (req, res, next) => {
         res.send("500 Internal Server Error")
         return;
       }
-      console.log(rows);
       req.ingredients = rows;
 
       db.all('SELECT * FROM instruction', (err, rows) => {

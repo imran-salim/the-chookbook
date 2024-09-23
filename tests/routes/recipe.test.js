@@ -1,6 +1,6 @@
 const db = require('../../db');
 
-test('there are recipes', async () => {
+test('there are recipes', () => {
   let data = [
     { id: 1, name: 'Soft Boiled Eggs' },
     { id: 2, name: 'Air Fryer Chicken Wings' }
@@ -17,7 +17,7 @@ test('there are recipes', async () => {
   });
 });
 
-test('there are ingredients for each recipe', async () => {
+test('there are ingredients for each recipe', () => {
   let data = [
     {
       id: 1,
@@ -82,7 +82,7 @@ test('there are ingredients for each recipe', async () => {
   });
 });
 
-test('there are instructions for each recipe', async () => {
+test('there are instructions for each recipe', () => {
   let data = [
     {
       id: 1,

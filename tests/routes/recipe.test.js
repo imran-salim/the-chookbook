@@ -4,7 +4,7 @@ test('there are recipes', () => {
   let data = [
     { id: 1, name: 'Soft Boiled Eggs' },
     { id: 2, name: 'Air Fryer Chicken Wings' }
-  ]
+  ];
 
   db.all('SELECT * FROM recipe', (err, rows) => {
     if (err) {

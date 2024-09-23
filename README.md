@@ -2,6 +2,10 @@
 
 Recipes of poultry dishes.
 
+Implemented using the Express framework in the Node.js runtime and SQLite3 for data storage.
+
+Tested with Jest.
+
 
 ---
 ### Installation

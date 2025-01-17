@@ -1,12 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:');
+const db = new sqlite3.Database('database.sqlite');
 
 const initializeRecipeDatabase = () => {
   db.exec(`
     CREATE TABLE IF NOT EXISTS recipe (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      UNIQUE(name)
+      UNIQUE (name)
     );
   
     CREATE TABLE IF NOT EXISTS ingredient (

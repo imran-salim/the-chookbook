@@ -7,8 +7,7 @@ router.get('/', (req, res, next) => {
   db.all('SELECT * FROM recipe', (err, rows) => {
     if (err) {
       console.error(err.message);
-      res.status(500);
-      res.send("500 Internal Server Error")
+      res.sendStatus(500);
       return;
     }
     req.recipes = rows;
@@ -16,8 +15,8 @@ router.get('/', (req, res, next) => {
     db.all('SELECT * FROM ingredient', (err, rows) => {
       if (err) {
         console.error(err.message);
-        res.status(500);
-        res.send("500 Internal Server Error")
+        res.sendStatus(500);
+        req.recipes = undefined;
         return;
       }
       req.ingredients = rows;
@@ -25,8 +24,9 @@ router.get('/', (req, res, next) => {
       db.all('SELECT * FROM instruction', (err, rows) => {
         if (err) {
             console.error(err.message);
-            res.status(500);
-            res.send("500 Internal Server Error")
+            res.sendStatus(500);
+            req.recipes = undefined;
+            req.ingredients = undefined;
             return;
         }
         req.instructions = rows;
@@ -36,7 +36,6 @@ router.get('/', (req, res, next) => {
         req.ingredients.forEach(ingredient => body[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
         req.instructions.forEach(instruction => body[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
         
-        res.status(200);
         // res.header("Content-Type", 'application/json');
         // res.send(JSON.stringify(body, null, 2));
         res.render('recipes', { title: 'Recipes', recipes: body });

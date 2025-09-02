@@ -2,6 +2,10 @@
 
 Recipes of poultry dishes.
 
+Implemented using the Express framework in the Node.js runtime and SQLite3 for data storage.
+
+Tested with Jest.
+
 
 ---
 ### Installation
@@ -27,4 +31,3 @@ http://localhost:3000/recipes
 
 ---
 **All recipes are from [Budget Bytes](https://www.budgetbytes.com/)**
-

@@ -1,6 +1,6 @@
 const db = require('../../db');
 
-test('there are recipes', () => {
+test('there are recipes', (done) => {
   let data = [
     { id: 1, name: 'Soft Boiled Eggs' },
     { id: 2, name: 'Air Fryer Chicken Wings' }
@@ -9,14 +9,15 @@ test('there are recipes', () => {
   db.all('SELECT * FROM recipe', (err, rows) => {
     if (err) {
       console.error(err.message);
-      fail(err);
+      done(err);
       return;
     }
     expect(rows).toEqual(data);
+    done();
   });
 });
 
-test('there are ingredients for each recipe', () => {
+test('there are ingredients for each recipe', (done) => {
   let data = [
     {
       id: 1,
@@ -73,14 +74,15 @@ test('there are ingredients for each recipe', () => {
   db.all('SELECT * FROM ingredient', (err, rows) => {
     if (err) {
       console.error(err.message);
-      fail(err);
+      done(err);
       return;
     }
     expect(rows).toEqual(data);
+    done();
   });
 });
 
-test('there are instructions for each recipe', () => {
+test('there are instructions for each recipe', (done) => {
   let data = [
     {
       id: 1,
@@ -135,14 +137,15 @@ test('there are instructions for each recipe', () => {
   db.all('SELECT * FROM instruction', (err, rows) => {
     if (err) {
       console.error(err.message);
-      fail(err);
+      done(err);
       return;
     }
     expect(rows).toEqual(data);
+    done();
   });
 });
 
-test('the recipe data is formatted correctly to be sent in the response body', () => {
+test('the recipe data is formatted correctly to be sent in the response body', (done) => {
   let data = {
     'Soft Boiled Eggs': {
       ingredients: [ 'large egg(s), chilled' ],
@@ -177,7 +180,7 @@ test('the recipe data is formatted correctly to be sent in the response body', (
   db.all('SELECT * FROM recipe', (err, rows) => {
     if (err) {
       console.error(err.message);
-      fail(err);
+      done(err);
       return;
     }
     let recipes = rows;
@@ -185,7 +188,7 @@ test('the recipe data is formatted correctly to be sent in the response body', (
     db.all('SELECT * FROM ingredient', (err, rows) => {
       if (err) {
         console.error(err.message);
-        fail(err);
+        done(err);
         return;
       }
       let ingredients = rows;
@@ -193,7 +196,7 @@ test('the recipe data is formatted correctly to be sent in the response body', (
       db.all('SELECT * FROM instruction', (err, rows) => {
         if (err) {
             console.error(err.message);
-            fail(err);
+            done(err);
             return;
         }
         let instructions = rows;
@@ -204,6 +207,7 @@ test('the recipe data is formatted correctly to be sent in the response body', (
         instructions.forEach(instruction => body[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
         
         expect(body).toEqual(data);
+        done();
       });
     });
   });

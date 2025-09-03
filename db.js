@@ -42,7 +42,7 @@ const initializeRecipeDatabase = () => {
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
       VALUES ("Soft Boiled Eggs", 1, "Add 1 inch of water to a sauce pot, cover, and bring to a boil over high heat.");
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
-      VALUES ("Soft Boiled Eggs", 2, "Once boiling, add an egg (or however many you'd like as long as they are in a single layer in a bottom of the pot), straight from the refridgerator into the pot. Replace the lid and let it continue to boil for exactly six minutes.");
+      VALUES ("Soft Boiled Eggs", 2, "Once boiling, add an egg (or however many you'd like as long as they are in a single layer in a bottom of the pot), straight from the refrigerator into the pot. Replace the lid and let it continue to boil for exactly six minutes.");
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
       VALUES ("Soft Boiled Eggs", 3, "After six minutes, remove the egg(s) from the pot and place them in an ice water bath or run under cool water until they are cool enough to handle. Peel, and enjoy!");
           
@@ -72,7 +72,7 @@ const initializeRecipeDatabase = () => {
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
       VALUES ("Air Fryer Chicken Wings", 1, "Pat the chicken wings dry with a paper towel. Make sure to get as much moisture off the skin as possible.");
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
-      VALUES ("Air Fryer Chicken Wings", 2, "Mix 1 teaspoon of salt with 1 teaspoon of baking powder per pound of chicken. Toss the dried chicken wings in this mixture until evenly coated. Place the wings on a rack set over a sheet pan and refridgerate for at least one hour.");
+      VALUES ("Air Fryer Chicken Wings", 2, "Mix 1 teaspoon of salt with 1 teaspoon of baking powder per pound of chicken. Toss the dried chicken wings in this mixture until evenly coated. Place the wings on a rack set over a sheet pan and refrigerate for at least one hour.");
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
       VALUES ("Air Fryer Chicken Wings", 3, "Remove the wings from the fridge and pat them dry a second time. Mix the cornstarch, garlic powder, smoked paprika, onion powder, and black pepper called for in the recipe for every pound of chicken. Toss the wings in this mixture until thoroughly coated.");
     INSERT INTO instruction (recipe_name, instruction_number, instruction_description)
